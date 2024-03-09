@@ -16,6 +16,7 @@ function App() {
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   //compare choices
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
     const bothHaveValues = choiceOne && choiceTwo;
 
     if (bothHaveValues) {
+      setDisabled(true);
       compareChoices();
     }
   }, [choiceOne, choiceTwo]);
@@ -66,6 +68,7 @@ function App() {
     setChoiceOne(null);
     setChoiceTwo(null);
     setTurns((prevTurns) => prevTurns + 1);
+    setDisabled(false);
   };
 
   return (
@@ -80,6 +83,7 @@ function App() {
             key={card.id}
             handleChoice={handleChoice}
             flipped={card === choiceOne || card === choiceTwo || card.matched}
+            disabled={disabled}
           />
         ))}
       </div>
