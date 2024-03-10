@@ -47,9 +47,9 @@ function App() {
   }, [choiceOne, choiceTwo]);
 
   //automatically start game
-  useEffect(() => {
-    shuffleCards();
-  }, []);
+  // useEffect(() => {
+  //   shuffleCards();
+  // }, []);
 
   //shuffle cards
   const shuffleCards = () => {
